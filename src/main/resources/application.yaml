@@ -1,0 +1,18 @@
+#spring:
+#  application:
+#    name: springboot_web_awss3
+
+server:
+  port: 8080
+
+swagger:
+  enabled: true
+
+aws:
+  region: ${aws.region}
+  key: ${aws.key}
+  secret: ${aws.secret}
+
+file:
+  path: in
+  filename: nomeDoObjeto.txt

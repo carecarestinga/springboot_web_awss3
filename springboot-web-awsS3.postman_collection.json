@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "012467c4-fbeb-4404-90cf-78cde5e5388b",
+		"name": "S3-example java",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "847637"
+	},
+	"item": [
+		{
+			"name": "criar um bucket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/buckets/careca-bucket?publicBucket=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buckets",
+						"careca-bucket"
+					],
+					"query": [
+						{
+							"key": "publicBucket",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criar um objeto no  bucket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"objectName\": \"object-name.txt\",\r\n    \"text\": \"value of object\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/buckets/careca-bucket/objects?publicObject=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buckets",
+						"careca-bucket",
+						"objects"
+					],
+					"query": [
+						{
+							"key": "publicObject",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscar um objeto pelo nome e fazer download",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/buckets/careca-bucket/objects/object-name.txt"
+			},
+			"response": []
+		},
+		{
+			"name": "movimentar um objeto entre dois buckets",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": "http://localhost:8080/buckets/careca-bucket/objects/object-name.txt/awebooks"
+			},
+			"response": []
+		},
+		{
+			"name": "listar os objetos existentes no bucket",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/buckets/careca-bucket/objects/"
+			},
+			"response": []
+		},
+		{
+			"name": "listar todos os buckets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/buckets/"
+			},
+			"response": []
+		},
+		{
+			"name": "apagar um bucket",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/buckets/awebooks"
+			},
+			"response": []
+		},
+		{
+			"name": "apagar um objeto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/buckets/careca-bucket/objects/object-name.txt"
+			},
+			"response": []
+		},
+		{
+			"name": "apagar vários objetos de uma vez",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/buckets/careca-bucket/objects/"
+			},
+			"response": []
+		}
+	]
+}
