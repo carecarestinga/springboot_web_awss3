@@ -10,6 +10,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+
+/**
+ *  Classe de Configuração das Credenciais do AWS
+ **/
 @Configuration
 @Slf4j
 public class AWSConfig {
@@ -23,9 +27,9 @@ public class AWSConfig {
     @Value("${aws.secret}")
     private String secret;
 
-    /*
+    /**
      *    Configura as Credencias de Acesso na AWS
-     * */
+     */
     public AWSCredentials credentials() {
         AWSCredentials credentials = new BasicAWSCredentials(
                 this.key,            //  access key

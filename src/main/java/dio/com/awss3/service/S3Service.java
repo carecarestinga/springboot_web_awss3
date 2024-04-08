@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Classe de serviço que faz as Operações de um Bucket e seus Objetos
  *
- **/
+ */
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -25,9 +25,11 @@ public class S3Service {
 
     private final AmazonS3 amazonS3Client;
 
-    /*
+    /**
      * Cria um Bucket verificando se não existe outro com mesmo nome
-     * */
+     *
+     *
+     */
     public void createS3Bucket(String bucketName, boolean publicBucket) {
         if(amazonS3Client.doesBucketExist(bucketName)) {
             log.info("Nome do bucket já em uso. Tente outro nome");
@@ -40,16 +42,18 @@ public class S3Service {
         }
     }
 
-    /*
+    /**
      *   Faz a listagem de Buckets existentes
-     * */
+     *
+     */
     public List<Bucket> listBuckets(){
         return amazonS3Client.listBuckets();
     }
 
-    /*
+    /**
      *   Deleta um Bucket pelo Nome
-     * */
+     *
+     */
     public void deleteBucket(String bucketName){
         try {
             amazonS3Client.deleteBucket(bucketName);
@@ -59,9 +63,11 @@ public class S3Service {
         }
     }
 
-    /*
+    /**
      *   Insere um Texto no Objeto e Insere o Objeto no Bucket
-     * */
+     *
+     *
+     */
     public void putObject(String bucketName, S3Model representation, boolean publicObject) throws IOException {
 
         String objectName = representation.getObjectName();
@@ -88,17 +94,19 @@ public class S3Service {
 
     }
 
-    /*
+    /**
      *   Listar os Nomes dos Objetos do Bucket
-     * */
+     *
+     */
     public List<S3ObjectSummary> listObjects(String bucketName){
         ObjectListing objectListing = amazonS3Client.listObjects(bucketName);
         return objectListing.getObjectSummaries();
     }
 
-    /*
+    /**
      *   Faz download do Objeto do Bucket
-     * */
+     *
+     */
     public File downloadObject(String bucketName, String objectName){
         S3Object s3object = amazonS3Client.getObject(bucketName, objectName);
         S3ObjectInputStream inputStream = s3object.getObjectContent();
@@ -110,25 +118,28 @@ public class S3Service {
         return null;
     }
 
-    /*
+    /**
      *   Deleta o Objeto do Bucket pelo Nome
-     * */
+     *
+     */
     public void deleteObject(String bucketName, String objectName){
         amazonS3Client.deleteObject(bucketName, objectName);
     }
 
-    /*
+    /**
      *    Deleta Todos os Objetos do Bucket
-     * */
+     *
+     */
     public void deleteMultipleObjects(String bucketName, List<String> objects){
         DeleteObjectsRequest delObjectsRequests = new DeleteObjectsRequest(bucketName)
                 .withKeys(objects.toArray(new String[0]));
         amazonS3Client.deleteObjects(delObjectsRequests);
     }
 
-    /*
+    /**
      *   Transfere um Objeto de um Bucket para Outro Bucket
-     * */
+     *
+     */
     public void moveObject(String bucketSourceName, String objectName, String bucketTargetName){
         amazonS3Client.copyObject(
                 bucketSourceName,

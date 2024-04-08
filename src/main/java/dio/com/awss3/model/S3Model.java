@@ -1,12 +1,15 @@
 package dio.com.awss3.model;
 
-/*
+/**
  *   Classe Modelo do Dominio
- * */
+ */
 
 public class S3Model {
     private String objectName;
     private String text;
+
+    public S3Model(String objectName, String text) {
+    }
 
     public String getObjectName() {
         return objectName;

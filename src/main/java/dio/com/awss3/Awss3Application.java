@@ -3,6 +3,9 @@ package dio.com.awss3;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ *   Classe Principal da Aplicação
+ */
 @SpringBootApplication
 public class Awss3Application {
 
