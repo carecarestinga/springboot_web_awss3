@@ -1,11 +1,11 @@
-package dio.com.springboot_web_awss3.service;
+package dio.com.awss3.service;
 
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.*;
 
 
-import dio.com.springboot_web_awss3.model.S3Model;
+import dio.com.awss3.model.S3Model;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
@@ -99,7 +99,7 @@ public class S3Service {
     /*
      *   Faz download do Objeto do Bucket
      * */
-    public void downloadObject(String bucketName, String objectName){
+    public File downloadObject(String bucketName, String objectName){
         S3Object s3object = amazonS3Client.getObject(bucketName, objectName);
         S3ObjectInputStream inputStream = s3object.getObjectContent();
         try {
@@ -107,6 +107,7 @@ public class S3Service {
         } catch (IOException e) {
             log.error(e.getMessage());
         }
+        return null;
     }
 
     /*

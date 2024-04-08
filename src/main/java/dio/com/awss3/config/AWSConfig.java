@@ -1,4 +1,4 @@
-package dio.com.springboot_web_awss3.config;
+package dio.com.awss3.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import com.amazonaws.auth.AWSCredentials;

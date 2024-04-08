@@ -1,4 +1,4 @@
-package dio.com.springboot_web_awss3.model;
+package dio.com.awss3.model;
 
 /*
  *   Classe Modelo do Dominio

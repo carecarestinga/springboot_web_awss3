@@ -1,4 +1,4 @@
-package dio.com.springboot_web_awss3.config;
+package dio.com.awss3.config;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -27,8 +27,8 @@ public class SwaggerConfig {
 
         ApiInfoBuilder apiInfoBuilder = new ApiInfoBuilder();
 
-        apiInfoBuilder.title("Title - Rest API");
-        apiInfoBuilder.description("API exemplo de uso de Springboot REST API");
+        apiInfoBuilder.title("Exemplo de Projeto AWS S3");
+        apiInfoBuilder.description("Endpoints para operações relacionadas a Buckets e Objetos S3.");
         apiInfoBuilder.version("1.0");
         apiInfoBuilder.termsOfServiceUrl("Termo de uso: Open Source");
         apiInfoBuilder.license("Licença - Sua Empresa");
@@ -44,7 +44,7 @@ public class SwaggerConfig {
 
         docket
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("dio.com.springboot_web_awss3.controller"))
+                .apis(RequestHandlerSelectors.basePackage("dio.com.awss3.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(this.informacoesApi().build())

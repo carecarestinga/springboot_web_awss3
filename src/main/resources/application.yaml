@@ -1,18 +1,11 @@
-#spring:
-#  application:
-#    name: springboot_web_awss3
 
 server:
-  port: 8080
+  port: 8080   # porta onde acessar o servidor
 
 swagger:
   enabled: true
 
 aws:
-  region: ${aws.region}
-  key: ${aws.key}
-  secret: ${aws.secret}
-
-file:
-  path: in
-  filename: nomeDoObjeto.txt
+  region: ${aws.region}  # região do AWS
+  key: ${aws.key}        # id da credencial  AWS
+  secret: ${aws.secret}  # senha da credencial AWS
